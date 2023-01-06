@@ -1,0 +1,116 @@
+.movie-discovery {
+  background-color: #060E17;
+  top: 0;
+  position: absolute;
+  width: 100vw;
+  height: auto;
+  z-index: -1;
+  color: white;
+  padding: 60px 0;
+
+  .container {
+    width: 90vw;
+    margin: 120px auto;
+    h1 {
+      font-family: $poppins;
+      margin-bottom: 24px;
+      font-size: 2rem;
+      font-weight: 700;
+      position: absolute;
+    }
+
+    h2 {
+      font-family: $poppins;
+      margin-bottom: 24px;
+      font-size: 1.5rem;
+      position: absolute;
+      font-weight: 700;
+    }
+
+    .genre-sliders {
+      padding-top: 120px;
+      .slick-slider {
+        padding: 60px 0;
+        .movie-card {
+          position: relative;
+          text-align: center;
+          overflow: hidden;
+          width: 200px;
+          height: 300px;
+
+          img {
+            height: 100%;
+            width: 100%;
+          }
+
+          span {
+            opacity: 0;
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            transition: opacity .3s ease-in-out;
+            color: #FBC500;
+
+            @media screen and (max-width: 1024px) {
+              opacity: 1;
+            }
+          }
+
+          p {
+            opacity: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: $poppins;
+            transition: opacity .3s ease-in-out;
+          }
+
+          .favorite {
+            background-color: white;
+          }
+        }
+
+        @media screen and (max-width: 1024px) {
+          .movie-card  {
+            width: 180px;
+            height: 300px;
+          }
+        }
+
+        @media screen and (max-width: 600px) {
+          .movie-card  {
+            width: 150px;
+            height: 250px;
+          }
+        }
+
+        @media screen and (max-width: 480px) {
+          .movie-card  {
+            width: 130px;
+            height: 200px;
+          }
+        }
+
+        .hover {
+          cursor: pointer;
+          img {
+            filter: blur(3px) brightness(0.7);
+          }
+
+          span {
+            opacity: 1;
+          }
+
+          p {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  .ant-row {
+    margin-top: 50px;
+  }
+}
