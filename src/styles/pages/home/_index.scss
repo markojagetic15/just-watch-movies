@@ -1,0 +1,54 @@
+.home {
+    padding-top: 120px;
+
+    .ant-row {
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .ant-btn {
+        height: 65px;
+    }
+
+    h1 {
+        color: #fff;
+        font-family: $poppins;
+        font-size: 3.5rem;
+        font-weight: 700;
+        display: block;
+    }
+
+    p {
+        color: #999C9F;
+        font-family: $poppins;
+        font-size: 1.2rem;
+        display: block;
+    }
+}
+
+.background-holder {
+    position: fixed;
+    top: 0;
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px) brightness(0.5);
+    transform: scale(1.1);
+    background-size: cover;
+
+    &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        opacity: 0.55;
+        background-image: linear-gradient(0deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    }
+}
