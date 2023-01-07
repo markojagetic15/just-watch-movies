@@ -20,7 +20,6 @@ const  Navigation = () => {
                     <Row>
                         <Space size="large">
                             <Col>
-                                {/* @ts-ignore */}
                                 <Dropdown menu={{ items }} placement="bottomRight">
                                     <Link onClick={(e) => e.preventDefault()} to="">
                                         <Space style={{color: "#fff"}}>

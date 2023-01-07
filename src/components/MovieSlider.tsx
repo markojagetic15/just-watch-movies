@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import { StarOutlined, StarFilled } from "@ant-design/icons";
 import { Tooltip } from 'antd';
 import { Link } from "react-router-dom";
-import type Movie from "../pages/MovieDiscovery/Domain/Movie"
+import type Movie from "../pages/MovieDiscovery/Domain/Entity/Movie"
 
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
@@ -59,22 +59,16 @@ const MovieCard = ({movie}: {movie: Movie}) => {
         e.stopPropagation();
         let favorites;
         if(state) {
-            if(localStorage.getItem("favorites")) {
-                favorites = JSON.parse(localStorage.getItem("favorites"));
-                favorites.push({key: movie.getId(), label: movie.getTitle()});
-                localStorage.setItem("favorites", JSON.stringify(favorites));
-            } else {
-                favorites = [];
-                favorites.push({key: movie.getId(), label: movie.getTitle()});
-                localStorage.setItem("favorites", JSON.stringify(favorites));
-            }
+            favorites = localStorage.getItem("favorites") ? JSON.parse(localStorage.getItem("favorites")) : []
+            favorites.push({key: movie?.getId(), label: movie?.getTitle()});
+            localStorage.setItem("favorites", JSON.stringify(favorites));
         } else {
             favorites = JSON.parse(localStorage.getItem("favorites"));
-            let indexOfFavorite = null
-            favorites.map((favorite: any, index: number) => indexOfFavorite = favorite.id === movie.getId() ? index : null)
-            // @ts-ignore
-            // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-            indexOfFavorite > -1 ? favorites.splice(indexOfFavorite, 1) : null
+            let indexOfFavorite = 0
+            favorites.map((favorite: { key: number, name: string }, index: number) => indexOfFavorite = favorite.key === movie.getId() ? index : null)
+            if(indexOfFavorite > -1) {
+                favorites.splice(indexOfFavorite, 1);
+            }
             localStorage.setItem("favorites", JSON.stringify(favorites));
         }
 
@@ -100,7 +94,7 @@ const MovieCard = ({movie}: {movie: Movie}) => {
     )
 }
 
-const MovieSlider = ({movies, isSingleMovie}: { movies: Array<Movie>, isSingleMovie: Boolean}) => {
+const MovieSlider = ({movies, isSingleMovie}: { movies: Array<any>, isSingleMovie: Boolean}) => {
     const settings = {
         dots: false,
         infinite: false,

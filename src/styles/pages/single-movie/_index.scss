@@ -1,0 +1,145 @@
+.single-movie {
+  height: 200vh;
+  background-color: #060D17;
+  top: 0;
+  position: absolute;
+  width: 100vw;
+  z-index: -1;
+
+  .backdrop-holder {
+    height: 60vh;
+    background-color: #fff;
+    top: 0;
+    width: 100vw;
+    position: absolute;
+    z-index: -1;
+    background-size: cover;
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-image: linear-gradient(0deg, rgb(6, 14, 23, 1), rgb(6, 14, 23, 0.8), rgb(6, 14, 23, 0));
+    }
+  }
+
+  .information-holder {
+    width: 80vw;
+    height: 100vh;
+    background-color: #060D17;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 24px;
+
+    .poster {
+      padding: 38px;
+      width: auto;
+
+      img {
+        border-radius: 10px 10px 0 0;
+        max-width: 100%;
+      }
+
+      div {
+        background-color: #1C252F;
+        height: 60px;
+        justify-content: space-around;
+        align-items: center;
+
+        .ant-col {
+          display: flex;
+          flex-direction: column;
+          text-align: center;
+          padding: 8px;
+          cursor: pointer;
+          span {
+            color: white;
+            transform: scale(1.2);
+          }
+
+          p {
+            color: white;
+          }
+        }
+      }
+    }
+
+    .info {
+      padding: 30px;
+
+      h1 {
+        font-family: $poppins;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: white;
+        padding-bottom: 50px;
+
+        span {
+          font-family: $poppins;
+          font-size: 1.3rem;
+          color: #8A8D98;
+        }
+      }
+
+      span {
+        font-family: $poppins;
+        font-size: 1rem;
+        color: #8A8D98;
+      }
+
+      .ant-row {
+        padding: 12px 0;
+        p:first-child {
+          color: #78A6B8;
+          padding-bottom: 0;
+        }
+
+        p:nth-of-type(2) {
+          color: white;
+          padding-top: 0;
+          font-size: 13px;
+        }
+      }
+
+      p {
+        color: #8A8D98;
+        font-size: 16px;
+        line-height: 1.5rem;
+      }
+
+    }
+  }
+
+  .notification {
+    position: fixed;
+    bottom: -100px;
+    padding: 12px;
+    height: 20px;
+    width: 200px;
+    left: 50%;
+    background-color: #1C252F;
+    color: white;
+    transition: bottom .2s ease-in-out;
+    text-align: center;
+    transform: translateX(-50%);
+    font-family: $poppins;
+  }
+
+  .visible {
+    bottom: 5px;
+  }
+
+  .movie-card {
+    height: 300px;
+
+    img {
+      max-width: 100%;
+    }
+  }
+}
