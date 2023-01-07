@@ -3,7 +3,7 @@ import MovieBuilder from "./MovieBuilder";
 import GenreBuilder from "./GenreBuilder";
 import { Genre } from "../Domain/Interface/GenreInterface";
 import { Movie } from "../Domain/Interface/MovieInterface";
-const API_KEY = process.env.API_KEY;
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 class MoviesRepository  {
     movieBuilder: MovieBuilder;
