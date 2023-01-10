@@ -1,5 +1,5 @@
 .single-movie {
-  height: 200vh;
+  height: 300vh;
   background-color: #060D17;
   top: 0;
   position: absolute;
@@ -36,6 +36,10 @@
     left: 50%;
     transform: translate(-50%);
     border-radius: 24px;
+
+    @media screen and (max-width: 600px) {
+      width: 100vw;
+    }
 
     .poster {
       padding: 38px;
