@@ -1,6 +1,6 @@
 class Genre {
     private readonly id: number;
-    private readonly  name: string;
+    private readonly name: string;
     constructor({
                     id,
                     name,
