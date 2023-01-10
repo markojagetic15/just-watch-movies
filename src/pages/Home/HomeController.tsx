@@ -1,9 +1,26 @@
-import React from 'react';
-import {Row, Button, Space, Col} from "antd"
+import React, {useEffect, useState} from 'react';
+import {Row, Button, Space, Col, notification} from "antd"
 import AssetManager from "../../helpers/AssetManager";
 import { Link } from "react-router-dom";
+import { LoadingOutlined } from "@ant-design/icons";
 
 const HomeController = () => {
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+
+    useEffect(() => {
+        document.title = 'Welcome to JustWatch';
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 500)
+    }, [])
+
+    if(isLoading) {
+        return (
+            <div className="loader-holder">
+                <LoadingOutlined className="loader"/>
+            </div>
+        )
+    }
     return (
         <>
             <div className="background-holder" style={{ backgroundImage: `url(${AssetManager.getUrl("background.jpeg")})`}}></div>
