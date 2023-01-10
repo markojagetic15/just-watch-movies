@@ -9,11 +9,11 @@ class AssetManager {
         return instance;
     }
 
-    getUrl(resourceUri: String) {
+    getUrl(resourceUri: string) {
         return `${process.env.RESOURCES_URL}/${resourceUri}`;
     }
 
-    static getUrl(resourceUri: String) {
+    static getUrl(resourceUri: string) {
         return AssetManager.getInstance().getUrl(resourceUri);
     }
 }
