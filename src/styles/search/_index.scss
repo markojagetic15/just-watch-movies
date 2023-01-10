@@ -1,0 +1,23 @@
+.search-item {
+  display: flex;
+  align-items: center;
+
+  img {
+    padding-right: 12px;
+    max-width: 50px;
+  }
+}
+
+.ant-dropdown-menu {
+  margin-top: 18px !important;
+  border-radius: 2px !important;
+  background-color: #10161D !important;
+
+  a {
+    color: white !important;
+  }
+
+  span {
+    color: #8A8D98 !important;
+  }
+}
