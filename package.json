@@ -30,7 +30,7 @@
     "build": "webpack --mode production",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "docker-compose -f docker-compose.dev.yml up"
+    "dev": "docker-compose -f docker-compose.yml up"
   },
   "eslintConfig": {
     "extends": [
