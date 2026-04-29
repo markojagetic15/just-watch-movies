@@ -2,12 +2,6 @@
   position: relative;
   height: 100%;
 
-  &:hover {
-    button {
-      opacity: 1;
-    }
-  }
-
   button {
     position: absolute;
     z-index: 10;
@@ -15,26 +9,41 @@
     transform: translateY(-50%);
     height: 300px;
     border: none;
-    opacity: 1;
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.8);
-    transition: opacity .3s ease-in-out;
-    width: 40px;
+    background: linear-gradient(90deg, rgba(6, 14, 23, 0.95) 0%, rgba(6, 14, 23, 0.5) 100%);
+    transition: opacity 0.25s ease, background 0.25s ease;
+    width: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     @media screen and (max-width: 600px) {
-      height: 250px;
+      height: 240px;
+      width: 32px;
     }
 
     span {
-      color: #78A6B8 !important;
-      height: 20px;
+      color: rgba(255, 255, 255, 0.7) !important;
+      font-size: 14px;
+      transition: color 0.2s ease, transform 0.2s ease;
     }
-  }
 
-  button:hover {
+    &:hover {
+      background: linear-gradient(90deg, rgba(6, 14, 23, 1) 0%, rgba(6, 14, 23, 0.7) 100%);
+
+      span {
+        color: $color-gold !important;
+        transform: scale(1.15);
+      }
+    }
   }
 
   .next {
     right: 0;
+    background: linear-gradient(270deg, rgba(6, 14, 23, 0.95) 0%, rgba(6, 14, 23, 0.5) 100%);
+
+    &:hover {
+      background: linear-gradient(270deg, rgba(6, 14, 23, 1) 0%, rgba(6, 14, 23, 0.7) 100%);
+    }
   }
 }

@@ -1,40 +1,93 @@
+/* ===== Buttons ===== */
 .ant-btn-primary {
-  background-color: #FBC500;
-  color: #000
+  background: linear-gradient(135deg, #FBC500 0%, #e8b200 100%) !important;
+  color: #060E17 !important;
+  border: none !important;
+  font-family: $poppins;
+  font-weight: 600 !important;
+  border-radius: 24px !important;
+  box-shadow: 0 4px 18px rgba(251, 197, 0, 0.28) !important;
+  transition: all 0.25s ease !important;
+
+  &:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 6px 24px rgba(251, 197, 0, 0.38) !important;
+  }
+
+  &:active {
+    transform: translateY(0) !important;
+  }
 }
 
 .ant-btn-default {
-  background-color: transparent;
-  color: #999C9F;
+  background-color: transparent !important;
+  color: $color-muted-light !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  font-family: $poppins;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+
+  &:hover {
+    color: white !important;
+    border-color: rgba(255, 255, 255, 0.3) !important;
+  }
 }
 
+/* ===== Search input ===== */
 .ant-input-affix-wrapper {
-    background-color: #10161D;
+  background-color: rgba(16, 22, 29, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 20px !important;
+  color: white;
+  transition: border-color 0.2s ease;
+
+  &:focus-within {
+    border-color: rgba(251, 197, 0, 0.4) !important;
+    box-shadow: 0 0 0 2px rgba(251, 197, 0, 0.08) !important;
+  }
+
+  .ant-input {
+    padding: 4px 224px 4px 12px !important;
+    background-color: transparent;
     color: white;
     border: none;
-    .ant-input {
-      padding: 4px 224px 4px 12px !important;
-      background-color: #10161D;
-      color: white;
-      border: none;
+    font-family: $poppins;
 
-      &::placeholder {
-        color: white;
-      }
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.45);
     }
+  }
+
+  .ant-input-prefix {
+    color: rgba(255, 255, 255, 0.45);
+    margin-right: 8px;
+  }
 }
 
+/* ===== Date Picker ===== */
 .ant-picker {
-  background-color: #10161D;
+  background-color: rgba(16, 22, 29, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 20px !important;
   color: white !important;
+  height: 38px;
+  padding: 4px 14px !important;
+  transition: border-color 0.2s ease;
+
+  &:hover {
+    border-color: rgba(251, 197, 0, 0.4) !important;
+  }
 
   span {
-    color: white;
+    color: rgba(255, 255, 255, 0.6);
   }
 
   input {
+    color: white !important;
+    font-family: $poppins;
+
     &::placeholder {
-      color: white !important;
+      color: rgba(255, 255, 255, 0.5) !important;
     }
 
     &[title] {
@@ -45,20 +98,85 @@
 
 .ant-picker-panel-container {
   background-color: #10161D !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 12px !important;
+
   div, button {
     color: white !important;
+  }
+
+  .ant-picker-cell-selected .ant-picker-cell-inner {
+    background-color: $color-gold !important;
+    color: #060E17 !important;
+  }
+}
+
+/* ===== Select dropdown ===== */
+.ant-select-selector {
+  background-color: rgba(16, 22, 29, 0.9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 20px !important;
+  height: 38px !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 0 14px !important;
+  transition: border-color 0.2s ease !important;
+
+  &:hover {
+    border-color: rgba(251, 197, 0, 0.4) !important;
   }
 }
 
 .ant-select-selection-item[title] {
   color: white !important;
+  font-family: $poppins;
+}
+
+.ant-select-arrow {
+  color: rgba(255, 255, 255, 0.4) !important;
 }
 
 .ant-select-dropdown {
-  background-color: #10161D;
-  color: white !important;
+  background-color: #10161D !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 12px !important;
+  padding: 4px !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
 
-  div {
-    color: white;
+  .ant-select-item {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-family: $poppins;
+    border-radius: 8px !important;
+    transition: background-color 0.15s ease !important;
+
+    &:hover, &-option-active {
+      background-color: rgba(251, 197, 0, 0.1) !important;
+      color: white !important;
+    }
+
+    &-option-selected {
+      background-color: rgba(251, 197, 0, 0.15) !important;
+      color: $color-gold !important;
+    }
   }
+}
+
+/* ===== Notifications ===== */
+.ant-notification-notice {
+  background-color: #1C252F !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 12px !important;
+
+  .ant-notification-notice-message,
+  .ant-notification-notice-description {
+    color: white !important;
+  }
+}
+
+/* ===== Tooltips ===== */
+.ant-tooltip-inner {
+  background-color: #1C252F !important;
+  border-radius: 8px !important;
+  font-family: $poppins;
+  font-size: 0.8rem !important;
 }

@@ -1,65 +1,138 @@
 .movie-discovery {
-  background-color: #060E17;
+  background-color: $color-bg;
   top: 0;
   position: absolute;
   width: 100vw;
-  height: auto;
+  min-height: 100vh;
   z-index: -1;
   color: white;
-  padding: 60px 0;
+  padding-bottom: 80px;
 
   .container {
     width: 90vw;
-    margin: 120px auto;
-    h1 {
-      font-family: $poppins;
-      margin-bottom: 24px;
-      font-size: 2rem;
-      font-weight: 700;
-      position: absolute;
+    margin: 0 auto;
+    padding-top: 100px;
+
+    .discovery-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 48px;
+
+      h1 {
+        font-family: $poppins;
+        font-size: 2rem;
+        font-weight: 700;
+        color: white;
+        line-height: 1.2;
+        position: relative;
+        padding-left: 16px;
+
+        &::before {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 6px;
+          bottom: 6px;
+          width: 4px;
+          background: $color-gold;
+          border-radius: 2px;
+        }
+      }
+
+      .filter-controls {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
     }
 
     h2 {
       font-family: $poppins;
-      margin-bottom: 24px;
-      font-size: 1.5rem;
-      position: absolute;
-      font-weight: 700;
-    }
-
-    .filter-results {
-      padding-left: 0;
-      margin-left: 0;
-
-      .container {
-        left: 0;
-        margin-left: 0;
-      }
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.85);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
     }
 
     .genre-sliders {
-      padding-top: 120px;
+      padding-top: 12px;
+
+      .slider-section {
+        margin-bottom: 12px;
+
+        .section-label {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 4px;
+          padding: 8px 0;
+
+          .section-label-text {
+            font-family: $poppins;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.85);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+          }
+
+          .section-label-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(251, 197, 0, 0.4) 0%, rgba(255, 255, 255, 0.04) 100%);
+          }
+        }
+      }
+
       .slick-slider {
-        padding: 60px 0;
+        padding: 16px 0 32px;
+
         .movie-card {
           position: relative;
           text-align: center;
           overflow: hidden;
           width: 200px;
           height: 300px;
+          border-radius: 10px;
+          cursor: pointer;
+          transition: transform 0.25s ease;
 
           img {
             height: 100%;
             width: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            display: block;
+            transition: filter 0.3s ease;
+          }
+
+          .card-overlay {
+            position: absolute;
+            inset: 0;
+            border-radius: 10px;
+            background: linear-gradient(
+              180deg,
+              transparent 40%,
+              rgba(6, 14, 23, 0.95) 100%
+            );
+            opacity: 0;
+            transition: opacity 0.3s ease;
           }
 
           span {
             opacity: 0;
             position: absolute;
-            bottom: 10px;
+            bottom: 36px;
             right: 10px;
-            transition: opacity .3s ease-in-out;
-            color: #FBC500;
+            transition: opacity 0.25s ease;
+            color: $color-gold;
+            font-size: 1.2rem;
 
             @media screen and (max-width: 1024px) {
               opacity: 1;
@@ -69,11 +142,19 @@
           p {
             opacity: 0;
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            bottom: 12px;
+            left: 10px;
+            right: 32px;
+            text-align: left;
             font-family: $poppins;
-            transition: opacity .3s ease-in-out;
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: white;
+            line-height: 1.3;
+            transition: opacity 0.25s ease;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
           }
 
           .favorite {
@@ -82,30 +163,35 @@
         }
 
         @media screen and (max-width: 1024px) {
-          .movie-card  {
+          .movie-card {
             width: 180px;
-            height: 300px;
+            height: 280px;
           }
         }
 
         @media screen and (max-width: 600px) {
-          .movie-card  {
+          .movie-card {
             width: 150px;
-            height: 250px;
+            height: 240px;
           }
         }
 
         @media screen and (max-width: 480px) {
-          .movie-card  {
+          .movie-card {
             width: 130px;
             height: 200px;
           }
         }
 
         .hover {
-          cursor: pointer;
+          transform: translateY(-4px);
+
           img {
-            filter: blur(3px) brightness(0.7);
+            filter: brightness(0.72);
+          }
+
+          .card-overlay {
+            opacity: 1;
           }
 
           span {
@@ -121,6 +207,69 @@
   }
 
   .ant-row {
-    margin-top: 50px;
+    margin-top: 0;
+  }
+}
+
+/* Filter results view */
+.filter-results {
+  padding-top: 60px !important;
+
+  .container {
+    padding-top: 120px !important;
+    margin: 0 auto !important;
+    left: 0 !important;
+
+    .ant-row:first-child {
+      align-items: center;
+      margin-bottom: 32px;
+
+      h1 {
+        font-size: 1.5rem;
+        padding-bottom: 0;
+      }
+    }
+
+    .movie {
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.02);
+      }
+
+      img {
+        max-width: 140px;
+        border-radius: 8px;
+        display: block;
+        object-fit: cover;
+      }
+
+      h1 {
+        font-size: 1.1rem;
+        font-family: $poppins;
+        color: white;
+        font-weight: 600;
+        padding-bottom: 0;
+        margin-top: 0 !important;
+
+        p {
+          display: inline;
+          font-size: 0.9rem;
+          color: $color-muted;
+          font-weight: 400;
+          margin-left: 8px;
+        }
+      }
+
+      p {
+        font-family: $poppins;
+        color: $color-muted;
+        font-size: 0.9rem;
+        line-height: 1.55;
+        margin-top: 8px;
+      }
+    }
   }
 }

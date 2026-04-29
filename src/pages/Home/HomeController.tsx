@@ -1,55 +1,79 @@
-import React, {useEffect, useState} from 'react';
-import {Row, Button, Space, Col, notification} from "antd"
-import AssetManager from "../../helpers/AssetManager";
-import { Link } from "react-router-dom";
-import { LoadingOutlined } from "@ant-design/icons";
+import React, { useEffect, useState } from 'react';
+import { Button, Space } from 'antd';
+import AssetManager from '../../helpers/AssetManager';
+import { Link } from 'react-router-dom';
+import { LoadingOutlined } from '@ant-design/icons';
 
 const HomeController = () => {
-    const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
-    useEffect(() => {
-        document.title = 'Welcome to JustWatch';
-        setTimeout(() => {
-            setIsLoading(false);
-        }, 500)
-    }, [])
+  useEffect(() => {
+    document.title = 'Welcome to JustWatch';
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+  }, []);
 
-    if(isLoading) {
-        return (
-            <div className="loader-holder">
-                <LoadingOutlined className="loader"/>
-            </div>
-        )
-    }
+  if (isLoading) {
     return (
-        <>
-            <div className="background-holder" style={{ backgroundImage: `url(${AssetManager.getUrl("background.jpeg")})`}}></div>
-            <div className="home">
-                <div>
-                    <Row justify="center">
-                        <Col span={14}>
-                            <h1>Your streaming guide for movies, TV shows & sports</h1>
-                        </Col>
-                    </Row>
-                    <Row justify="center">
-                        <Col span={14}>
-                            <p>Find where to stream new, popular & upcoming entertainment with JustWatch.</p>
-                        </Col>
-                    </Row>
-                    <Row justify="center">
-                        <Col span={14}>
-                            <Space size="large">
-                                <Link to="discover-movies">
-                                    <Button type="primary" size="large">Discover Movies & TV shows</Button>
-                                </Link>
-                                <Button size="large">Features</Button>
-                            </Space>
-                        </Col>
-                    </Row>
-                </div>
+      <div className="loader-holder">
+        <LoadingOutlined className="loader" />
+      </div>
+    );
+  }
+
+  return (
+    <>
+      <div
+        className="background-holder"
+        style={{ backgroundImage: `url(${AssetManager.getUrl('background.jpeg')})` }}
+      />
+      <div className="home">
+        <div className="home-hero">
+          <div className="home-badge">
+            <span className="badge-dot" />
+            Your streaming guide
+          </div>
+
+          <h1>
+            Find where to{' '}
+            <span className="highlight">stream</span>
+            <br />
+            anything you love
+          </h1>
+
+          <p>
+            Discover movies &amp; TV shows across all major platforms.<br />
+            One search. Every service.
+          </p>
+
+          <div className="home-cta">
+            <Link to="discover-movies">
+              <Button type="primary" size="large">
+                Discover Movies &amp; Shows
+              </Button>
+            </Link>
+            <Button size="large">Learn more</Button>
+          </div>
+
+          <div className="home-stats">
+            <div className="stat">
+              <span className="stat-value">500K+</span>
+              <span className="stat-label">Titles</span>
             </div>
-        </>
-    )
-}
+            <div className="stat">
+              <span className="stat-value">100+</span>
+              <span className="stat-label">Services</span>
+            </div>
+            <div className="stat">
+              <span className="stat-value">Free</span>
+              <span className="stat-label">Forever</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
 
 export default HomeController;
