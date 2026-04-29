@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- dark background tile -->
+  <rect width="32" height="32" rx="7" fill="#060E17"/>
+  <!-- golden circle -->
+  <circle cx="16" cy="16" r="12" fill="#FBC500"/>
+  <!-- dark play triangle, visually centered (optical shift right) -->
+  <polygon points="13,10 13,22 24,16" fill="#060E17"/>
+</svg>

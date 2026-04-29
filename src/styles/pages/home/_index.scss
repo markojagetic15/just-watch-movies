@@ -1,54 +1,176 @@
 .home {
-    padding-top: 120px;
+  padding-top: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    .ant-row {
-        text-align: center;
-        padding: 20px 0;
+  .home-hero {
+    text-align: center;
+    padding: 0 24px;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  .home-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(251, 197, 0, 0.12);
+    border: 1px solid rgba(251, 197, 0, 0.28);
+    border-radius: 20px;
+    padding: 6px 18px;
+    font-family: $poppins;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: $color-gold;
+    letter-spacing: 1px;
+    margin-bottom: 32px;
+    text-transform: uppercase;
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      background-color: $color-gold;
+      border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+  }
+
+  h1 {
+    color: #fff;
+    font-family: $poppins;
+    font-size: 3.6rem;
+    font-weight: 800;
+    line-height: 1.18;
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+
+    .highlight {
+      color: $color-gold;
+    }
+  }
+
+  p {
+    color: rgba(255, 255, 255, 0.58);
+    font-family: $poppins;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+
+  .home-cta {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+
+    .ant-btn-primary {
+      height: 52px !important;
+      padding: 0 36px !important;
+      font-size: 0.95rem !important;
+      letter-spacing: 0.2px !important;
     }
 
-    .ant-btn {
-        height: 65px;
-    }
+    .ant-btn-default {
+      height: 52px !important;
+      padding: 0 32px !important;
+      font-size: 0.95rem !important;
+      color: rgba(255, 255, 255, 0.75) !important;
+      border-color: rgba(255, 255, 255, 0.18) !important;
+      border-radius: 24px !important;
 
-    h1 {
-        color: #fff;
-        font-family: $poppins;
-        font-size: 3.5rem;
-        font-weight: 700;
+      &:hover {
+        color: white !important;
+        border-color: rgba(255, 255, 255, 0.4) !important;
+      }
+    }
+  }
+
+  .home-stats {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    margin-top: 52px;
+    padding-top: 36px;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+
+    .stat {
+      text-align: center;
+
+      .stat-value {
         display: block;
+        font-family: $poppins;
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: white;
+      }
+
+      .stat-label {
+        display: block;
+        font-family: $poppins;
+        font-size: 0.78rem;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.4);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-top: 4px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    h1 {
+      font-size: 2.4rem;
+    }
+
+    .home-stats {
+      gap: 28px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    h1 {
+      font-size: 1.9rem;
     }
 
     p {
-        color: #999C9F;
-        font-family: $poppins;
-        font-size: 1.2rem;
-        display: block;
+      font-size: 1rem;
     }
+
+    .home-stats {
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
 }
 
 .background-holder {
-    position: fixed;
-    top: 0;
-    z-index: -1;
-    width: 100vw;
-    height: 100vh;
-    -webkit-filter: blur(5px);
-    -moz-filter: blur(5px);
-    -o-filter: blur(5px);
-    -ms-filter: blur(5px);
-    filter: blur(5px) brightness(0.5);
-    transform: scale(1.1);
-    background-size: cover;
+  position: fixed;
+  top: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  filter: blur(6px) brightness(0.42);
+  transform: scale(1.08);
+  background-size: cover;
+  background-position: center;
 
-    &:after {
-        content: '';
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        opacity: 0.55;
-        background-image: linear-gradient(0deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
-    }
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(6, 14, 23, 0.3) 0%,
+      rgba(6, 14, 23, 0.55) 50%,
+      rgba(6, 14, 23, 0.9) 100%
+    );
+  }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
 }

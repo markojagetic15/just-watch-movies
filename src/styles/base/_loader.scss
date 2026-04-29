@@ -1,16 +1,20 @@
 .loader-holder {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #060E17;
+  background-color: $color-bg;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 20px;
+  z-index: 9999;
+
   .loader {
-    z-index: 100;
-    font-size: 5rem;
-    color: white;
+    font-size: 3rem;
+    color: $color-gold;
+    filter: drop-shadow(0 0 16px rgba(251, 197, 0, 0.4));
   }
 }
-
