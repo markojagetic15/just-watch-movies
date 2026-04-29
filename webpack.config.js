@@ -3,13 +3,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const Dotenv = require("dotenv-webpack");
 
+// Injected by CI (GitHub Actions) for subdirectory deploys, e.g. /just-watch-movies/
+const publicPath = process.env.PUBLIC_PATH || '/';
+
 module.exports = {
     mode: 'development',
     entry: './src/index.tsx',
     devtool: 'inline-source-map',
     output: {
         path: path.join(__dirname, '/dist'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        publicPath,
     },
     devServer: {
         static: './dist',
@@ -50,13 +54,14 @@ module.exports = {
     plugins:[
         new HtmlWebpackPlugin({
             template: './public/index.html',
-            publicPath: "/",
+            publicPath,
         }),
         new CopyWebpackPlugin({
             patterns: [
                 { from: 'public/assets', to: 'assets' }
             ]
         }),
-        new Dotenv(),
+        // systemvars: true so GitHub Actions env vars (RESOURCES_URL, etc.) are also injected
+        new Dotenv({ systemvars: true }),
     ]
 }

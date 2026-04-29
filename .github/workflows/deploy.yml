@@ -1,0 +1,46 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [develop]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        env:
+          # Injected into the browser bundle via dotenv-webpack (systemvars: true)
+          REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
+          RESOURCES_URL: /just-watch-movies/assets
+          ROUTER_BASE: /just-watch-movies
+          # Read by webpack.config.js at build time for publicPath
+          PUBLIC_PATH: /just-watch-movies/
+        run: npm run build
+
+      # GitHub Pages returns 404.html for unknown paths — copy index.html so
+      # React Router can handle client-side navigation on direct URL access
+      - name: Copy index.html → 404.html for SPA routing
+        run: cp dist/index.html dist/404.html
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          # Keeps the gh-pages branch clean on each deploy
+          force_orphan: true

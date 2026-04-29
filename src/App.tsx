@@ -9,7 +9,7 @@ import SearchResults from "./pages/SearchResults/SearchResults";
 function App() {
   return (
       <>
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.ROUTER_BASE || ''}>
             <Routes>
                 <Route path="/" element={<Navigation />}>
                     <Route index element={<HomeController />} />
